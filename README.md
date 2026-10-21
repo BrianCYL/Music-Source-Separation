@@ -49,6 +49,12 @@ contain `separator.json` and the target model files. The repository also
 contains checkpoints from other training epochs, such as
 `checkpoints_25/`, `checkpoints_50/`, and `checkpoints_150/`.
 
+## Training
+
+For instructions on
+training Open-Unmix models from scratch, please refer to the upstream
+[training documentation](https://github.com/sigsep/open-unmix-pytorch/blob/master/docs/training.md) provided by Open-Unmix official repo.
+
 ## Inference and evaluation
 
 Inference is implemented in `code/evaluate.py`. It loads the custom
