@@ -51,9 +51,46 @@ contains checkpoints from other training epochs, such as
 
 ## Training
 
-For instructions on
-training Open-Unmix models from scratch, please refer to the upstream
-[training documentation](https://github.com/sigsep/open-unmix-pytorch/blob/master/docs/training.md) provided by Open-Unmix official repo.
+Train the vocals separator from the project root with the MUSDB18-HQ dataset.
+The trainer reads the dataset from `./dataset`, saves checkpoints under the
+selected output folder, and writes a `separator.json` file plus the model
+snapshot(s) for the target source.
+
+```bash
+python code/train.py \
+  --root ./dataset \
+  --target vocals \
+  --output ./checkpoints_hidden256 \
+  --batch-size 128 \
+  --hidden-size 256 \
+  --epochs 200 \
+  --patience 50 \
+  --nb-workers 8
+```
+
+To train the larger variant, change the hidden size and output directory:
+
+```bash
+python code/train.py \
+  --root ./dataset \
+  --target vocals \
+  --output ./checkpoints_hidden1024 \
+  --batch-size 128 \
+  --hidden-size 1024 \
+  --epochs 200 \
+  --patience 50 \
+  --nb-workers 8
+```
+
+Optional training flags supported by the project code include:
+
+- `--unidirectional` to use a unidirectional LSTM;
+- `--checkpoint <path>` to resume training from a saved checkpoint; and
+- `--model <path>` to fine-tune a pretrained model.
+
+The best model is saved as `vocals_best.pth` (or the corresponding target name),
+with validation and training histories stored in the output directory as JSON
+metadata.
 
 ## Inference and evaluation
 
