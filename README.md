@@ -1,7 +1,7 @@
 # Music Source Separation
 
 This repository implements music source separation with
-[Open-Unmix](https://github.com/sigsep/open-unmix). The model separates a
+[Open-Unmix](https://github.com/sigsep/open-unmix-pytorch). The model separates a
 mixture into vocals and the remaining accompaniment. The provided checkpoints
 are trained with the MUSDB18-HQ dataset.
 
